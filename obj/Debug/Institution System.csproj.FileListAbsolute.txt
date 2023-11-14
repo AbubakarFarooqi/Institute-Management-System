@@ -24,3 +24,13 @@ D:\Institution System\obj\Debug\Institution System.exe
 D:\Institution System\obj\Debug\Institution System.pdb
 D:\Institution System\obj\Debug\Institution_System.Dashboard.resources
 D:\Institution System\obj\Debug\Institution_System.Student.resources
+D:\Institution System\obj\Debug\Institution_System.attend.resources
+D:\Institution System\obj\Debug\Institution_System.Attendence.resources
+D:\Institution System\obj\Debug\Institution_System.CourseReg.resources
+D:\Institution System\obj\Debug\Institution_System.Courses.resources
+D:\Institution System\obj\Debug\Institution_System.Evaluation.resources
+D:\Institution System\obj\Debug\Institution_System.MangementAtten.resources
+D:\Institution System\obj\Debug\Institution_System.Mischallanoues.resources
+D:\Institution System\obj\Debug\Institution_System.Teacher.resources
+D:\Institution System\obj\Debug\Institution_System.TeacherAtten.resources
+D:\Institution System\obj\Debug\Institution_System.Management.resources

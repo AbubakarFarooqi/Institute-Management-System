@@ -1,6 +1,6 @@
 ﻿namespace Institution_System
 {
-    partial class Dashboard
+    partial class attend
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.attendenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teacherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,10 +59,10 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-1, 1);
+            this.panel1.Location = new System.Drawing.Point(-2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(217, 423);
-            this.panel1.TabIndex = 0;
+            this.panel1.Size = new System.Drawing.Size(254, 451);
+            this.panel1.TabIndex = 11;
             // 
             // button6
             // 
@@ -68,7 +75,6 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "Teacher";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -81,7 +87,6 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Courses";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -94,7 +99,6 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Evaluation";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -107,7 +111,6 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Mischallanoues Expenses";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -120,7 +123,6 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Attendence";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -133,7 +135,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Student";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -148,25 +149,71 @@
             // 
             // panel2
             // 
-            this.panel2.BackgroundImage = global::Institution_System.Properties.Resources.dashhhhhhhh;
+            this.panel2.BackgroundImage = global::Institution_System.Properties.Resources.attttt;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(217, 0);
+            this.panel2.Controls.Add(this.menuStrip1);
+            this.panel2.Location = new System.Drawing.Point(249, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(550, 426);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(557, 451);
+            this.panel2.TabIndex = 13;
             // 
-            // Dashboard
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Blue;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.attendenceToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(557, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // attendenceToolStripMenuItem
+            // 
+            this.attendenceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.studentToolStripMenuItem,
+            this.teacherToolStripMenuItem,
+            this.managementToolStripMenuItem});
+            this.attendenceToolStripMenuItem.Name = "attendenceToolStripMenuItem";
+            this.attendenceToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.attendenceToolStripMenuItem.Text = "Attendence";
+            // 
+            // studentToolStripMenuItem
+            // 
+            this.studentToolStripMenuItem.Name = "studentToolStripMenuItem";
+            this.studentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.studentToolStripMenuItem.Text = "Student";
+            this.studentToolStripMenuItem.Click += new System.EventHandler(this.studentToolStripMenuItem_Click);
+            // 
+            // teacherToolStripMenuItem
+            // 
+            this.teacherToolStripMenuItem.Name = "teacherToolStripMenuItem";
+            this.teacherToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teacherToolStripMenuItem.Text = "Teacher";
+            this.teacherToolStripMenuItem.Click += new System.EventHandler(this.teacherToolStripMenuItem_Click);
+            // 
+            // managementToolStripMenuItem
+            // 
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.managementToolStripMenuItem.Text = "Management";
+            this.managementToolStripMenuItem.Click += new System.EventHandler(this.managementToolStripMenuItem_Click);
+            // 
+            // attend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 426);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Dashboard";
-            this.Text = "Dashboard";
+            this.Name = "attend";
+            this.Text = "attend";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,13 +221,18 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem attendenceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem teacherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem;
     }
 }
