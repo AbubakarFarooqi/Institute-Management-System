@@ -1,0 +1,26 @@
+C:\Users\Laptop House\Desktop\Institution System\bin\Debug\Institution System.exe.config
+C:\Users\Laptop House\Desktop\Institution System\bin\Debug\Institution System.exe
+C:\Users\Laptop House\Desktop\Institution System\bin\Debug\Institution System.pdb
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution System.csproj.AssemblyReference.cache
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution System.csproj.SuggestedBindingRedirects.cache
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution_System.Form1.resources
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution_System.Properties.Resources.resources
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution System.csproj.GenerateResource.cache
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution System.csproj.CoreCompileInputs.cache
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution System.exe
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution System.pdb
+C:\Users\Laptop House\Desktop\Institution System\obj\Debug\Institution_System.Signup.resources
+D:\Institution System\bin\Debug\Institution System.exe.config
+D:\Institution System\bin\Debug\Institution System.exe
+D:\Institution System\bin\Debug\Institution System.pdb
+D:\Institution System\obj\Debug\Institution System.csproj.AssemblyReference.cache
+D:\Institution System\obj\Debug\Institution System.csproj.SuggestedBindingRedirects.cache
+D:\Institution System\obj\Debug\Institution_System.Form1.resources
+D:\Institution System\obj\Debug\Institution_System.Properties.Resources.resources
+D:\Institution System\obj\Debug\Institution_System.Signup.resources
+D:\Institution System\obj\Debug\Institution System.csproj.GenerateResource.cache
+D:\Institution System\obj\Debug\Institution System.csproj.CoreCompileInputs.cache
+D:\Institution System\obj\Debug\Institution System.exe
+D:\Institution System\obj\Debug\Institution System.pdb
+D:\Institution System\obj\Debug\Institution_System.Dashboard.resources
+D:\Institution System\obj\Debug\Institution_System.Student.resources
