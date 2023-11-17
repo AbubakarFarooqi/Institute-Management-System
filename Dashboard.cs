@@ -58,5 +58,10 @@ namespace Institution_System
            Mischallanoues b = new Mischallanoues();
             b.ShowDialog();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
