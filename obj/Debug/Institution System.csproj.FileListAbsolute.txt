@@ -34,3 +34,5 @@ D:\Institution System\obj\Debug\Institution_System.Mischallanoues.resources
 D:\Institution System\obj\Debug\Institution_System.Teacher.resources
 D:\Institution System\obj\Debug\Institution_System.TeacherAtten.resources
 D:\Institution System\obj\Debug\Institution_System.Management.resources
+D:\Institution System\obj\Debug\Institution_System.EditStu.resources
+D:\Institution System\obj\Debug\Institution_System.ViewStu.resources
