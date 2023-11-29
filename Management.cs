@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Institution_System.BL;
+using Institution_System.DL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +17,16 @@ namespace Institution_System
 {
     public partial class Management : Form
     {
+        private ManagementBL businessLogic;
+        private string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+        string error;
         public Management()
         {
             InitializeComponent();
+      
+           ManagementDL dataAccess = new ManagementDL(connectionString);
+            businessLogic = new ManagementBL(dataAccess);
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -26,18 +35,9 @@ namespace Institution_System
             {
                 if (errorProvider1.GetError(textBox5) == "" && errorProvider1.GetError(textBox7) == "")
                 {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("Insert into Management (Name , Gender , Address , Email ,  Phone ,  Status  , [Created-On] , [Editted-On] , AccountNo) values (@Name, @Gender , @Address , @Email ,  @Phone ,  @Status ,  GETDATE() , GETDATE() , @AccountNo)", con);
-                    cmd.Parameters.AddWithValue("@Name", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@Gender", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@AccountNo", textBox7.Text);
-                    cmd.Parameters.AddWithValue("@Address", textBox6.Text);
-                    cmd.Parameters.AddWithValue("@Phone", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@Status", 1);
-                    cmd.Parameters.AddWithValue("@Email", textBox5.Text);
-                    //cmd.Parameters.AddWithValue("@Editted-On", DateTime.Now);
-                    cmd.ExecuteNonQuery();
+                    businessLogic.SaveManagement(textBox2.Text, textBox3.Text, textBox6.Text, textBox4.Text,textBox5.Text, int.Parse(textBox7.Text));
                     MessageBox.Show("Successfully saved");
+                    
                 }
                 else
                 { 
@@ -47,7 +47,17 @@ namespace Institution_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //Hnadle exception
+                error = "Error updating in database:" + ex.Message;
+                using (SqlConnection con1 = new SqlConnection(connectionString))
+                {
+                    con1.Open();
+                    SqlCommand cmd1 = new SqlCommand("Insert into Logs(Exception , functionName , CreatedTime) values(@exception , @functionName , GETDATE())", con1);
+                    cmd1.Parameters.AddWithValue("@functionName", "InsertManagement");
+                    cmd1.Parameters.AddWithValue("@exception", error);
+                    cmd1.ExecuteNonQuery();
+                    MessageBox.Show(error);
+                }
             }
         }
         private static bool IsValid(string email)
@@ -104,6 +114,11 @@ namespace Institution_System
                 errorProvider1.SetError(textBox7, "");
 
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

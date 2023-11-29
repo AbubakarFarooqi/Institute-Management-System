@@ -61,7 +61,7 @@ namespace Institution_System
                 MessageBox.Show("Please enter both email and password.");
                 return;
             }
-            string query = "SELECT COUNT(*) FROM SignUp WHERE Email=@Email AND Password=@Password";
+            string query = "SELECT  Role FROM SignUp WHERE Email=@Email AND Password=@Password";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -71,12 +71,18 @@ namespace Institution_System
                         command.Parameters.AddWithValue("@Password", password);
 
                         connection.Open();
-
-                        int count = (int)command.ExecuteScalar();
-                        if (count > 0)
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
                         {
-                            MessageBox.Show("Login successful!");
-                            // Add code to navigate to the next form or perform other actions
+                            string role = reader["Role"].ToString();
+                            MessageBox.Show($"Login successful! Welcome, {role}.");
+                            if (role == "Admin")
+                            {
+                                this.Hide();
+                                Dashboard b = new Dashboard();
+                                b.ShowDialog();
+
+                            }
                         }
                         else
                         {

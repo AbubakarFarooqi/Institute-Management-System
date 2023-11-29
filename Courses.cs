@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Institution_System.BL;
+using Institution_System.DL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +16,14 @@ namespace Institution_System
 {
     public partial class Courses : Form
     {
+        private CoursesBL businessLogic;
+        private string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+        string error;
         public Courses()
         {
             InitializeComponent();
+            CoursesDL dataAccess = new CoursesDL(connectionString);
+            businessLogic = new CoursesBL(dataAccess);
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -25,16 +32,9 @@ namespace Institution_System
             {
                 if (errorProvider1.GetError(textBox2) == "" && errorProvider1.GetError(textBox3) == "")
                 {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("Insert into Course (Name , CreditHrs , Status , [Created-On] , [Editted-On] , Semester , Department) values (@Name, @CreditHrs , @Status ,  GETDATE() , GETDATE() , @Semester , @Department)", con);
-                    cmd.Parameters.AddWithValue("@Name", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@CreditHrs", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Semester", comboBox2.Text);
-                    cmd.Parameters.AddWithValue("@Department", comboBox1.Text);
-                    cmd.Parameters.AddWithValue("@Status", 1);
-             
-                    cmd.ExecuteNonQuery();
+                    businessLogic.SaveCourses(textBox2.Text, int.Parse(textBox3.Text), int.Parse(comboBox2.Text), comboBox1.Text);
                     MessageBox.Show("Successfully saved");
+                   
                 }
                 else
                 {
@@ -44,7 +44,17 @@ namespace Institution_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //Hnadle exception
+                error = "Error updating in database:" + ex.Message;
+                using (SqlConnection con1 = new SqlConnection(connectionString))
+                {
+                    con1.Open();
+                    SqlCommand cmd1 = new SqlCommand("Insert into Logs(Exception , functionName , CreatedTime) values(@exception , @functionName , GETDATE())", con1);
+                    cmd1.Parameters.AddWithValue("@functionName", "InsertCourses");
+                    cmd1.Parameters.AddWithValue("@exception", error);
+                    cmd1.ExecuteNonQuery();
+                    MessageBox.Show(error);
+                }
             }
         }
 
@@ -84,6 +94,16 @@ namespace Institution_System
                 errorProvider1.SetError(textBox3, "");
 
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Courses_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

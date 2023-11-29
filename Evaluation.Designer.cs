@@ -181,6 +181,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(589, 452);
             this.panel2.TabIndex = 9;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // comboBox2
             // 

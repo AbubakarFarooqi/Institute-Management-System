@@ -58,7 +58,14 @@
     <Compile Include="Attendence.Designer.cs">
       <DependentUpon>Attendence.cs</DependentUpon>
     </Compile>
+    <Compile Include="BL\CoursesBL.cs" />
+    <Compile Include="BL\EvaluationBL.cs" />
+    <Compile Include="BL\ManagementBL.cs" />
+    <Compile Include="BL\ManAttendenceBL.cs" />
+    <Compile Include="BL\MisslaneousBL.cs" />
+    <Compile Include="BL\StdAttendenceBL.cs" />
     <Compile Include="BL\StudentBL.cs" />
+    <Compile Include="BL\TeaAttendenceBL.cs" />
     <Compile Include="BL\TeacherBL.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="CourseReg.cs">
@@ -79,7 +86,14 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DL\CoursesDL.cs" />
+    <Compile Include="DL\EvaluationDL.cs" />
+    <Compile Include="DL\ManagementDL.cs" />
+    <Compile Include="DL\ManAttendenceDL.cs" />
+    <Compile Include="DL\MisslaneousDL.cs" />
+    <Compile Include="DL\StdAttendenceDL.cs" />
     <Compile Include="DL\StudentDL.cs" />
+    <Compile Include="DL\TeaAttendenceDL.cs" />
     <Compile Include="DL\TeacherDL.cs" />
     <Compile Include="EditStu.cs">
       <SubType>Form</SubType>

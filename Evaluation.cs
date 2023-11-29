@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Institution_System.BL;
+using Institution_System.DL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +16,15 @@ namespace Institution_System
 {
     public partial class Evaluation : Form
     {
+        private EvaluationBL businessLogic;
+        private string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+        string error;
         public Evaluation()
         {
             InitializeComponent();
+            EvaluationDL dataAccess = new EvaluationDL(connectionString);
+            businessLogic = new EvaluationBL(dataAccess);
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -26,16 +34,9 @@ namespace Institution_System
             {
                 if (errorProvider1.GetError(textBox3) == "" && errorProvider1.GetError(textBox4) == "")
                 {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("Insert into Evaluation ( Department , TotalWg , Subject , Semster ,   Status  , [Created-On] , [Editted-On]) values ( @Department , @TotalWg , @Subject , @Semster ,  @Status ,  GETDATE() , GETDATE())", con);
-                    cmd.Parameters.AddWithValue("@Department", comboBox1.Text);
-                    cmd.Parameters.AddWithValue("@TotalWg", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Subject", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@Semster", comboBox2.Text);
-                    cmd.Parameters.AddWithValue("@Status", 1);
-                    //cmd.Parameters.AddWithValue("@Editted-On", DateTime.Now);
-                    cmd.ExecuteNonQuery();
+                    businessLogic.SaveEvaluation(comboBox1.Text, int.Parse(textBox3.Text), textBox4.Text,int.Parse( comboBox2.Text));
                     MessageBox.Show("Successfully saved");
+                    
                 }
                 else
                 {
@@ -45,7 +46,17 @@ namespace Institution_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //Hnadle exception
+                error = "Error updating in database:" + ex.Message;
+                using (SqlConnection con1 = new SqlConnection(connectionString))
+                {
+                    con1.Open();
+                    SqlCommand cmd1 = new SqlCommand("Insert into Logs(Exception , functionName , CreatedTime) values(@exception , @functionName , GETDATE())", con1);
+                    cmd1.Parameters.AddWithValue("@functionName", "InsertEvaluation");
+                    cmd1.Parameters.AddWithValue("@exception", error);
+                    cmd1.ExecuteNonQuery();
+                    MessageBox.Show(error);
+                }
             }
         }
 
@@ -83,6 +94,11 @@ namespace Institution_System
                 errorProvider1.SetError(textBox4, "");
 
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

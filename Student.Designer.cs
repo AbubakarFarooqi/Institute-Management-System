@@ -404,6 +404,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Student";
             this.Text = "Student";
+            this.Load += new System.EventHandler(this.Student_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

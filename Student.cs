@@ -18,6 +18,8 @@ namespace Institution_System
     public partial class Student : Form
     {
         private StudentBL businessLogic;
+        private string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+        string error;
         public Student()
         {
             InitializeComponent();
@@ -54,7 +56,17 @@ namespace Institution_System
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //Hnadle exception
+                error = "Error updating in database:" + ex.Message;
+                using (SqlConnection con1 = new SqlConnection(connectionString))
+                {
+                    con1.Open();
+                    SqlCommand cmd1 = new SqlCommand("Insert into Logs(Exception , functionName , CreatedTime) values(@exception , @functionName , GETDATE())", con1);
+                    cmd1.Parameters.AddWithValue("@functionName", "InsertStudent");
+                    cmd1.Parameters.AddWithValue("@exception", error);
+                    cmd1.ExecuteNonQuery();
+                    MessageBox.Show(error);
+                }
             }
         }
 
@@ -122,6 +134,11 @@ namespace Institution_System
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Student_Load(object sender, EventArgs e)
         {
 
         }

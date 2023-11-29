@@ -81,6 +81,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(587, 452);
             this.panel2.TabIndex = 5;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // comboBox2
             // 
@@ -345,6 +346,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "Courses";
             this.Text = "Courses";
+            this.Load += new System.EventHandler(this.Courses_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

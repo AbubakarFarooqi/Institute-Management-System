@@ -38,10 +38,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
             this.Present = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Absent = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -170,7 +170,24 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(569, 398);
             this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Present
+            // 
+            this.Present.HeaderText = "Present";
+            this.Present.Name = "Present";
+            this.Present.Text = "Present";
+            this.Present.ToolTipText = "Present";
+            this.Present.UseColumnTextForButtonValue = true;
+            // 
+            // Absent
+            // 
+            this.Absent.HeaderText = "Absent";
+            this.Absent.Name = "Absent";
+            this.Absent.Text = "Absent";
+            this.Absent.ToolTipText = "Absent";
+            this.Absent.UseColumnTextForButtonValue = true;
             // 
             // panel3
             // 
@@ -192,22 +209,6 @@
             this.label7.Size = new System.Drawing.Size(171, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Student Attendance";
-            // 
-            // Present
-            // 
-            this.Present.HeaderText = "Present";
-            this.Present.Name = "Present";
-            this.Present.Text = "Present";
-            this.Present.ToolTipText = "Present";
-            this.Present.UseColumnTextForButtonValue = true;
-            // 
-            // Absent
-            // 
-            this.Absent.HeaderText = "Absent";
-            this.Absent.Name = "Absent";
-            this.Absent.Text = "Absent";
-            this.Absent.ToolTipText = "Absent";
-            this.Absent.UseColumnTextForButtonValue = true;
             // 
             // Attendence
             // 
