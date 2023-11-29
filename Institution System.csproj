@@ -58,6 +58,8 @@
     <Compile Include="Attendence.Designer.cs">
       <DependentUpon>Attendence.cs</DependentUpon>
     </Compile>
+    <Compile Include="BL\StudentBL.cs" />
+    <Compile Include="BL\TeacherBL.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="CourseReg.cs">
       <SubType>Form</SubType>
@@ -77,6 +79,8 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="DL\StudentDL.cs" />
+    <Compile Include="DL\TeacherDL.cs" />
     <Compile Include="EditStu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,5 +247,6 @@
   <ItemGroup>
     <None Include="Resources\attttt.jpeg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

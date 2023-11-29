@@ -10,14 +10,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Institution_System.BL;
+using Institution_System.DL;
 
 namespace Institution_System
 {
     public partial class Student : Form
     {
+        private StudentBL businessLogic;
         public Student()
         {
             InitializeComponent();
+            string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+            StudentDL dataAccess = new StudentDL(connectionString);
+            businessLogic = new StudentBL(dataAccess);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -36,17 +42,8 @@ namespace Institution_System
             {
                 if ( errorProvider1.GetError(textBox5) == "" && errorProvider1.GetError(textBox7) == "")
                 {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("Insert into Student (Name , Gender , Address , grade ,Phone ,  Status , Email , [Created-On] , [Editted-On]) values (@Name, @Gender , @Address , @grade , @Phone , @Status , @Email , GETDATE() , GETDATE())", con);
-                    cmd.Parameters.AddWithValue("@Name", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@Gender", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Address", textBox6.Text);
-                    cmd.Parameters.AddWithValue("@grade", textBox7.Text);
-                    cmd.Parameters.AddWithValue("@Phone", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@Status", 1);
-                    cmd.Parameters.AddWithValue("@Email", textBox5.Text);
-                    //cmd.Parameters.AddWithValue("@Editted-On", DateTime.Now);
-                    cmd.ExecuteNonQuery();
+                    businessLogic.SaveStudent(textBox2.Text, textBox3.Text, textBox6.Text, int.Parse(textBox7.Text), textBox4.Text, textBox5.Text);
+
                     MessageBox.Show("Successfully saved");
                 }
                 else

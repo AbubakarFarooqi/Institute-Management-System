@@ -22,24 +22,18 @@ namespace Institution_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 if (errorProvider1.GetError(textBox3) == "" && errorProvider1.GetError(textBox5) == "" && errorProvider1.GetError(textBox4) == "")
                 {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("Insert into SignUp values ( @Name, @Phone, @Password ,@Email, @ID)", con);
-                    cmd.Parameters.AddWithValue("@Email", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@Name", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@Phone", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@Password", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@ID", textBox5.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Successfully saved");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                var con = Configuration.getInstance().getConnection();
+                SqlCommand cmd = new SqlCommand("Insert into SignUp values ( @Name, @Phone, @Password ,@Email, @ID)", con);
+                cmd.Parameters.AddWithValue("@Email", textBox3.Text);
+                cmd.Parameters.AddWithValue("@Name", textBox1.Text);
+                cmd.Parameters.AddWithValue("@Phone", textBox2.Text);
+                cmd.Parameters.AddWithValue("@Password", textBox4.Text);
+                cmd.Parameters.AddWithValue("@ID", textBox5.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Successfully saved");
             }
 
         }

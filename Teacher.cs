@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Institution_System.BL;
+using Institution_System.DL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +16,15 @@ namespace Institution_System
 {
     public partial class Teacher : Form
     {
+       private TeacherBL businessLogic;
+        private string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+        string error;
         public Teacher()
         {
             InitializeComponent();
+            string connectionString = @"Data Source=(local);Initial Catalog=Institution;Integrated Security=True";
+            TeacherDL dataAccess = new TeacherDL(connectionString);
+            businessLogic = new TeacherBL(dataAccess);
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -30,30 +38,29 @@ namespace Institution_System
             {
                 if (errorProvider1.GetError(textBox5) == "" && errorProvider1.GetError(textBox7) == "")
                 {
-                    var con = Configuration.getInstance().getConnection();
-                    SqlCommand cmd = new SqlCommand("Insert into Teacher (Name , Gender , Address , Email , AccountNo , Phone ,Salary ,  Status  , Created , Editted) values (@Name, @Gender , @Address , @Email , @AccountNo , @Phone ,@Salary ,  @Status ,  GETDATE() , GETDATE())", con);
-                    cmd.Parameters.AddWithValue("@Name", textBox2.Text);
-                    cmd.Parameters.AddWithValue("@Gender", textBox3.Text);
-                    cmd.Parameters.AddWithValue("@AccountNo", textBox7.Text);
-                    cmd.Parameters.AddWithValue("@Address", textBox6.Text);
-                    cmd.Parameters.AddWithValue("@Phone", textBox4.Text);
-                    cmd.Parameters.AddWithValue("@Salary", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@Status", 1);
-                    cmd.Parameters.AddWithValue("@Email", textBox5.Text);
-                    //cmd.Parameters.AddWithValue("@Editted-On", DateTime.Now);
-                    cmd.ExecuteNonQuery();
+                    businessLogic.SaveTeacher(textBox2.Text, textBox3.Text, textBox6.Text, textBox5.Text, int.Parse(textBox7.Text), textBox4.Text, int.Parse(textBox1.Text));
                     MessageBox.Show("Successfully saved");
                 }
                 else
                 {
                     MessageBox.Show("Please enter valid data");
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //Hnadle exception
+                error = "Error updating in database:" + ex.Message;
+                using (SqlConnection con1 = new SqlConnection(connectionString))
+                {
+                    con1.Open();
+                    SqlCommand cmd1 = new SqlCommand("Insert into Logs(Exception , functionName , CreatedTime) values(@exception , @functionName , GETDATE())", con1);
+                    cmd1.Parameters.AddWithValue("@functionName", "InsertTeacher");
+                    cmd1.Parameters.AddWithValue("@exception", error);
+                    cmd1.ExecuteNonQuery();
+                    MessageBox.Show(error);
+                }
             }
+            
         }
 
         private void textBox5_Validating(object sender, CancelEventArgs e)
