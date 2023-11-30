@@ -73,7 +73,7 @@ namespace Institution_System
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            EditStu b = new EditStu();
+            EditStudent b = new EditStudent();
             b.ShowDialog();
         }
         private static bool IsValid(string email)
